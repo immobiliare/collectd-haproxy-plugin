@@ -1,4 +1,4 @@
-# haproxy-collectd-plugin - haproxy.py
+#!/usr/bin/env python
 #
 # Author: Michael Leinartas
 # Description: This is a collectd plugin which runs under the Python plugin to
