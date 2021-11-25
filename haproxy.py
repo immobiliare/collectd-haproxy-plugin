@@ -16,6 +16,7 @@ import collectd
 import csv
 import re
 import socket
+import sys
 
 PLUGIN_NAME = 'haproxy'
 RECV_SIZE = 1024
@@ -253,6 +254,8 @@ class HAProxySocket(object):
                 collectd.warning('unable to connect to {}'.format(socket))
                 continue
 
+            if sys.version_info[0] >= 3:
+                command = command.encode('utf-8')
             conn.sendall(command)
             result_buf = str()
             buf = conn.recv(RECV_SIZE)
