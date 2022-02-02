@@ -25,7 +25,7 @@ It's the result of the [hmrc/collectd-haproxy](https://github.com/hmrc/collectd-
 Download the latest release of `haproxy.py` file into an arbirtrary path `/usr/local/lib/collectd`, e.g. for version 0.1.0:
 
 ```bash
-curl -Lo /tmp/collectd/haproxy.py --create-dirs \
+curl -Lo /usr/local/lib/collectd/haproxy.py --create-dirs \
   https://github.com/immobiliare/collectd-haproxy-plugin/releases/download/0.1.0/haproxy.py
 ```
 
