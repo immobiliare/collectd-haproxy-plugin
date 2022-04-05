@@ -1,6 +1,6 @@
 # Collectd HAProxy plugin <a href="#collectd-haproxy-plugin"><img align="left" width="100px" src="https://github.com/immobiliare/collectd-haproxy-plugin/blob/master/.github/collectd.png"></a>
 
-[![pipeline status](https://github.com/immobiliare/collectd-haproxy-plugin/actions/workflows/test.yml/badge.svg)](https://github.com/immobiliare/collectd-haproxy-plugin/actions/workflows)
+[![pipeline status](https://github.com/immobiliare/collectd-haproxy-plugin/actions/workflows/test.yml/badge.svg)](https://github.com/immobiliare/collectd-haproxy-plugin/actions/workflows/test.yml)
 
 This is a [collectd](https://collectd.org) plugin for [HAProxy](https://haproxy.com).
 
