@@ -9,8 +9,11 @@ on:
       - master
 
 jobs:
-  test-py3:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', '3.12', 'pypy3.7', 'pypy3.8', 'pypy3.9', 'pypy3.10']
 
     steps:
       - name: Checkout repository
@@ -19,19 +22,24 @@ jobs:
       - name: Setup Python environment
         uses: actions/setup-python@v5
         with:
-          python-version: 3.7
-          architecture: x64
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
 
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install mock pycodestyle pytest
-          echo "PYTHONPATH=/opt/hostedtoolcache/Python/3.7.6/x64/lib/python3.7/site-packages" >> $GITHUB_ENV
-          sudo ln -sf $(which python) /usr/bin/python3
+          pip install -r requirements.txt
 
       - name: Run tests
-        run: |
-          py.test haproxy_test.py
+        run: pytest haproxy_test.py --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.python-version }}.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
 
       - name: Run codestyle check
         run: |
