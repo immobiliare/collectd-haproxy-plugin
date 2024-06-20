@@ -9,34 +9,6 @@ on:
       - master
 
 jobs:
-  test-py2:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Python environment
-        uses: actions/setup-python@v5
-        with:
-          python-version: 2.7
-          architecture: x64
-
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install mock pycodestyle pytest
-          echo "PYTHONPATH=/opt/hostedtoolcache/Python/2.7.18/x64/lib/python2.7/site-packages" >> $GITHUB_ENV
-          sudo ln -sf $(which python) /usr/bin/python2
-
-      - name: Run tests
-        run: |
-          py.test haproxy_test.py
-
-      - name: Run codestyle check
-        run: |
-          pycodestyle *.py
-
   test-py3:
     runs-on: ubuntu-latest
 
