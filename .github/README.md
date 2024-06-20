@@ -57,9 +57,11 @@ EOF
 
 ## Compatibility
 
-| Version | Status     | Python compatibility | HAproxy compatibility |
-| ------- | ---------- | -------------------- | --------------------- |
-| 1.x     | maintained | >=2.7                | >=1.8                 |
+| Version | Status                  | Python compatibility | HAproxy compatibility |
+| ------- | ----------------------- | -------------------- | --------------------- |
+| 1.x     | maintained but untested | cpython >=2.7        | >=1.8                 |
+| 1.x     | maintained and tested   | cpython >=3.7        | >=1.8                 |
+| 1.x     | maintained and tested   | pypy >=3.7           | >=1.8                 |
 
 ## Requirements
 
